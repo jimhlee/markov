@@ -1,5 +1,6 @@
 /** Textual markov chain generator. */
 
+// TODO: get random choice
 
 class MarkovMachine {
 
@@ -57,10 +58,32 @@ class MarkovMachine {
   getText() {
     // TODO: implement this!
 
-    // - start at the first word in the input text
-    // - find a random word from the following-words of that
-    // - repeat until reaching the terminal null
+    const words = this.getChains();
+    const text = [];
+    // {}
+    if (!(Object.keys(words).length)) {
+      return '';
+    }
+
+    let word = this.words[0];
+    text.push(word);
+
+    let nextWord;
+
+    while (nextWord !== null) {
+      nextWord = MarkovMachine.randomChoice(words[word]);
+      word = nextWord;
+      text.push(nextWord);
+    }
+
+    return text.join(' ').trim();
   }
+
+  static randomChoice(array) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    return array[randomIndex];
+  }
+
 }
 
 module.exports = {
