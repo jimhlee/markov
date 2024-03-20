@@ -78,7 +78,7 @@ describe("getText function", function () {
     const text = machine.getText();
 
     expect(text).toContain('fat cat') || expect(text).toContain('fat cat.');
-    expect(text).toContain('fat cat');
+    expect(text).not.toContain('the cat');
   });
 
 });

@@ -56,12 +56,12 @@ class MarkovMachine {
    *  until it hits a null choice. */
 
   getText() {
-    // TODO: implement this!
+    // TODO: change words to chains
 
-    const words = this.getChains();
+    const chains = this.chains;
     const text = [];
-    // {}
-    if (!(Object.keys(words).length)) {
+
+    if (!(Object.keys(chains).length)) {
       return '';
     }
 
@@ -71,7 +71,7 @@ class MarkovMachine {
     let nextWord;
 
     while (nextWord !== null) {
-      nextWord = MarkovMachine.randomChoice(words[word]);
+      nextWord = MarkovMachine.randomChoice(chains[word]);
       word = nextWord;
       text.push(nextWord);
     }
