@@ -31,6 +31,10 @@ class MarkovMachine {
     const chains = {};
     const wordList = this.words;
 
+    if (wordList.length === 1 && wordList[0] === "") {
+      return chains;
+    }
+
     for (let i = 0; i < wordList.length; i++) {
 
       let word = wordList[i];
@@ -62,3 +66,6 @@ class MarkovMachine {
 module.exports = {
   MarkovMachine,
 };
+
+// the cat in the hat
+// the cat in the cat in the
